@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Primera Página Web</title>
+  <style>
+    /* VARIABLES Y ESTILOS GLOBALES */
+    :root {
+      --primary: #6366f1;
+      --primary-hover: #4f46e5;
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-secondary: #94a3b8;
+      --border: #334155;
+    }
+
+    .light-theme {
+      --primary: #4f46e5;
+      --primary-hover: #4338ca;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-secondary: #64748b;
+      --border: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* BARRA DE NAVEGACIÓN */
+    header {
+      background-color: var(--card-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .theme-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .theme-btn:hover {
+      border-color: var(--primary);
+    }
+
+    /* SECCIÓN PRINCIPAL (HERO) */
+    .hero {
+      max-width: 1100px;
+      margin: 4rem auto;
+      padding: 0 2rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      color: var(--text-secondary);
+      font-size: 1.125rem;
+      max-width: 600px;
+      margin: 0 auto 2rem auto;
+    }
+
+    .cta-btn {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+
+    .cta-btn:hover {
+      background-color: var(--primary-hover);
+    }
+
+    /* TARJETAS DE CARACTERÍSTICAS */
+    .features {
+      max-width: 1100px;
+      margin: 0 auto 4rem auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+    }
+
+    .card h2 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    /* PIE DE PÁGINA */
+    footer {
+      margin-top: auto;
+      background-color: var(--card-bg);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 1.5rem;
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVEGACIÓN -->
+  <header>
+    <nav>
+      <a href="#" class="logo">MiSitioWeb</a>
+      <button class="theme-btn" id="themeToggle">Modo Claro / Oscuro</button>
+    </nav>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main>
+    <section class="hero">
+      <h1 id="greeting">¡Hola, bienvenido a mi sitio!</h1>
+      <p>Este es un diseño web responsive, moderno e interactivo construido con HTML, CSS y JavaScript.</p>
+      <button class="cta-btn" id="changeGreetingBtn">Cambiar Saludo</button>
+    </section>
+
+    <section class="features">
+      <div class="card">
+        <h2>🎨 Diseño Limpio</h2>
+        <p>Uso de variables CSS para adaptar colores fácilmente y mantener una estructura ordenada.</p>
+      </div>
+      <div class="card">
+        <h2>📱 100% Adaptable</h2>
+        <p>Utiliza CSS Grid y Flexbox para verse impecable tanto en celulares como en computadoras.</p>
+      </div>
+      <div class="card">
+        <h2>⚡ Interactivo</h2>
+        <p>Lógica con JavaScript para alternar el tema visual y responder a los clics del usuario.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    <p>&copy; 2026 MiSitioWeb. Creado para aprender desarrollo web.</p>
+  </footer>
+
+  <!-- LÓGICA JAVASCRIPT -->
+  <script>
+    // Cambio de Tema (Claro / Oscuro)
+    const themeToggleBtn = document.getElementById('themeToggle');
+    themeToggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light-theme');
+    });
+
+    // Cambio de Saludo
+    const greetingText = document.getElementById('greeting');
+    const changeGreetingBtn = document.getElementById('changeGreetingBtn');
+    
+    const greetings = [
+      "¡Hola, bienvenido a mi sitio!",
+      "¡Welcome to my website!",
+      "¡Bienvenue sur mon site web!",
+      "¡Willkommen auf meiner Website!"
+    ];
+    let currentIndex = 0;
+
+    changeGreetingBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % greetings.length;
+      greetingText.textContent = greetings[currentIndex];
+    });
+  </script>
+</body>
+</html>
